@@ -13,7 +13,13 @@ const spotlight = ref('')
 async function fetchData() {
   try {
     const response = await axios.get('https://spotlight-backend.onrender.com/spotlight/employee')
+    if(!response?.data?.data) {
+      spotlight.value = "No employee found"
+      return;
+    }
+      
     spotlight.value = response.data.data
+    return;
   } catch (error) {
     console.error('Failed to fetch spotlight employee:', error)
     spotlight.value = 'Sorry we are facing some issues. Please try again later...'
