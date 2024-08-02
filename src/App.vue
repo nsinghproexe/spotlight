@@ -4,7 +4,7 @@ import ConfettiExplosion from 'vue-confetti-explosion'
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-const BASE_URL = import.meta.env.BASE_URL || 'https://www.test.com/'
+const BASE_URL = import.meta.env.BASE_URL || 'https://spotlight-backend.onrender.com'
 
 // Define the spotlight state
 const spotlight = ref('')
@@ -12,7 +12,7 @@ const spotlight = ref('')
 // Function to fetch data from the API
 async function fetchData() {
   try {
-    const response = await axios.get(`${BASE_URL}spotlight/employee`)
+    const response = await axios.get(`${BASE_URL}/spotlight/employee`)
     spotlight.value = response.data.data
   } catch (error) {
     console.error('Failed to fetch spotlight employee:', error)
