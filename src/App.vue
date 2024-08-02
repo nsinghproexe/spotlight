@@ -1,33 +1,37 @@
 <script setup>
 // import ConfettiCelebrationVue from './components/ConfettiCelebration.vue'
-import ConfettiExplosion from 'vue-confetti-explosion'
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import ConfettiExplosion from "vue-confetti-explosion";
+import { ref, onMounted } from "vue";
+import axios from "axios";
 
-const BASE_URL = import.meta.env.BASE_URL || 'https://spotlight-backend.onrender.com'
+const BASE_URL =
+  import.meta.env.BASE_URL || "https://spotlight-backend.onrender.com";
 
 // Define the spotlight state
-const spotlight = ref('')
+const spotlight = ref("");
 
 // Function to fetch data from the API
 async function fetchData() {
   try {
-    const response = await axios.get('https://spotlight-backend.onrender.com/spotlight/employee')
-    if(!response?.data?.data) {
-      spotlight.value = "No employee found"
+    const response = await axios.get(
+      "https://spotlight-backend.onrender.com/spotlight/employee"
+    );
+    if (!response?.data?.data) {
+      spotlight.value = "No employee found";
       return;
     }
-      
-    spotlight.value = response.data.data
+
+    spotlight.value = response.data.data;
     return;
   } catch (error) {
-    console.error('Failed to fetch spotlight employee:', error)
-    spotlight.value = 'Sorry we are facing some issues. Please try again later...'
+    console.error("Failed to fetch spotlight employee:", error);
+    spotlight.value =
+      "Sorry we are facing some issues. Please try again later...";
   }
 }
 
 // Call fetchData when the component mounts
-onMounted(fetchData)
+onMounted(fetchData);
 </script>
 
 <template>
@@ -40,18 +44,18 @@ onMounted(fetchData)
       <div class="section">
         <div>
           <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
-          <img src="https://www.proexelancers.com/images/proexelancers-logo.svg" />
+          <img
+            src="https://www.proexelancers.com/images/proexelancers-logo.svg"
+          />
 
           <div class="wrapper">
             <!-- <HelloWorld msg="You did it!" /> -->
           </div>
         </div>
 
-        <div>
-          <div class="spotlight">
-            Current person on spotlight - {&#123;
-            <span class="employee-name">{{ spotlight }}</span> &#125;}
-          </div>
+        <div class="spotlight">
+          Current person on spotlight - {&#123;
+          <span class="employee-name">{{ spotlight }}</span> &#125;}
         </div>
       </div>
     </div>
@@ -90,14 +94,7 @@ header {
 }
 
 .employee-name {
-  background: linear-gradient(
-    169deg,
-    rgb(24 10 255) 0%,
-    rgba(13, 3, 68, 1) 9%,
-    rgb(253 139 18) 33%,
-    rgba(249, 171, 0, 1) 97%,
-    rgb(0 186 223) 100%
-  );
+  background: linear-gradient(309deg, rgb(76 221 72) 0%, rgb(253 255 255) 47%, rgb(255 143 0) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
