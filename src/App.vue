@@ -12,7 +12,7 @@ const spotlight = ref('')
 // Function to fetch data from the API
 async function fetchData() {
   try {
-    const response = await axios.get(`${BASE_URL}/spotlight/employee`)
+    const response = await axios.get('https://spotlight-backend.onrender.com/spotlight/employee')
     spotlight.value = response.data.data
   } catch (error) {
     console.error('Failed to fetch spotlight employee:', error)
